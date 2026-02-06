@@ -22,7 +22,8 @@ const otelProvider = {
         try {
             // Build headers object
             const headers = {};
-            
+            headers['stream-name'] = conf?.streamName || 'default';
+
             // Add Basic Auth if credentials are provided
             if (conf && conf.username && conf.password) {
                 // Create Basic Auth header: base64(username:password)

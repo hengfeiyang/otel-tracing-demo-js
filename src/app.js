@@ -36,10 +36,12 @@ window.initializeOtel = function() {
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
         const url = document.getElementById('collectorUrl').value.trim() || 'http://localhost:5080/api/default/v1/traces';
-        
+        const streamName = document.getElementById('streamName').value.trim() || 'default';
+
         // Build configuration object
         const config = {
-            url: url
+            url: url,
+            streamName: streamName
         };
         
         // Add Basic Auth if credentials are provided
@@ -61,6 +63,7 @@ window.initializeOtel = function() {
         document.getElementById('username').disabled = true;
         document.getElementById('password').disabled = true;
         document.getElementById('collectorUrl').disabled = true;
+        document.getElementById('streamName').disabled = true;
     } catch (error) {
         log(`Error initializing OpenTelemetry: ${error.message}`, 'error');
         console.error(error);
